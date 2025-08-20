@@ -1,0 +1,48 @@
+default:
+  # 运行模式，可选 debug 和 release
+  mode: debug
+  # 服务监听端口
+  listen: 8090
+  # jwt 签名的 key
+  jwt_key: pixiu
+  # 自动创建指定模型的数据库表结构，不会更新已存在的数据库表
+  auto_migrate: true
+  # 日志的格式，可选 text 和 json
+  log_format: json
+  log_level: info
+  # 静态文件路径
+  static_files: /static
+
+# 配置前端请求地址
+dashboard:
+  url: http://localhost:8080
+
+#tls:
+#  cert_file: test.pem
+#  key_file: test.key
+
+# 数据库地址信息
+mysql:
+  host: peng
+  user: root
+  password: Pixiu868686
+  port: 3306
+  name: pixiu
+
+worker:
+  work_dir: /tmp/pixiu
+  engines:
+    - image: ccr.ccs.tencentyun.com/pixiucloud/kubez-ansible:v2.0.1
+      os_supported:
+        - centos7
+        - debian10
+        - ubuntu18.04
+    - image: ccr.ccs.tencentyun.com/pixiucloud/kubez-ansible:v3.0.1
+      os_supported:
+        - debian11
+        - ubuntu20.04
+        - ubuntu22.04
+        - rocky8.5
+        - rocky9.2
+        - rocky9.3
+        - openEuler22.03
